@@ -8,6 +8,7 @@ gem 'rails', '3.2.3'
 group :development, :test do
   gem 'mysql2'
   gem 'rspec-rails', '2.9.0'
+  gem 'annotate'
 end
 
 
@@ -21,6 +22,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'geocoder'
 
 group :test do
   gem 'capybara', '1.1.2'
