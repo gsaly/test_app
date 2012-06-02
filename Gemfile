@@ -23,6 +23,7 @@ end
 
 gem 'jquery-rails'
 gem 'geocoder'
+gem 'gravtastic'
 
 group :test do
   gem 'capybara', '1.1.2'
