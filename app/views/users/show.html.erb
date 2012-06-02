@@ -1,5 +1,6 @@
+<% provide(:title, "fiche de #{@user.login}") %>
 <p id="notice"><%= notice %></p>
-
+<%= gravatar_for @user %>
 <p>
   <b>Firstname:</b>
   <%= @user.firstname %>

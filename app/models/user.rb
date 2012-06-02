@@ -1,14 +1,25 @@
+require 'gravtastic'
+
 class User < ActiveRecord::Base
   attr_accessible :address, :city, :country, :email, :firstname, :full_address, :lastname, :latitude, :login, :longitude, :picture, :postalCode, :remember_me
 
-  validates :firstname, :lastname, :email, :presence => true
+  validates :firstname, :lastname, :email, :login, :presence => true
   validates :password, :length => { :minimum => 5 }
+
+  #for using the gravtastic gem/plugin
+  include Gravtastic
+  gravtastic :secure => true, :size => 120
 
   #geocoded_by :full_address
   #after_validation :geocode,
   #     :if => lambda { |obj| obj.full_address_changed? }
 
   #has_many :topics
+
+
+  def name
+
+  end
 
 
   def full_address
