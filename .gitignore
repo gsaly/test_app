@@ -6,6 +6,7 @@
 
 # Ignore bundler config
 /.bundle
+/.idea
 
 #Ignore database config
 /db/database.yml
@@ -22,5 +23,8 @@ doc/
 *.swp
 .project
 
+<<<<<<< HEAD
 /.idea
+=======
+>>>>>>> sign-up
 
