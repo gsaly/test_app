@@ -1,3 +1,5 @@
+*= require app_bootstrap
+*= require bootstrap
 body{}
 
 #header{
