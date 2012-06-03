@@ -1,3 +1,60 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
+  helper_method  :user_sign_in?, :deny_access, :current_id, :current_user, :current_username
+
+  #before_filter :authorize , :except =>[:sign_in]
+
+  ################ Gestion des logs ################
+
+  $logger = Logger.new(STDOUT)
+
+  $logger.level = Logger::INFO
+
+  $logger.formatter = proc{|s,t,p,m|"%5s [%s] (%s) %s :: %s\n" % [s,t.strftime("%Y-%m-%d %H:%M:%S"), $$, p, m]}
+
+
+  def current_id
+    session[:user_id]
+  end
+
+  def current_user
+    current_id ? User.find(current_id) : nil
+  end
+
+
+  def current_login
+    session[:username]
+  end
+
+
+  def authenticity
+    deny_access unless !user_sign_in?
+  end
+
+  def user_sign_in?
+    session[:user_id].nil?
+  end
+
+
+  def deny_access
+    redirect_to signin_path
+  end
+
+  protected
+
+  def permission_denied
+    flash[:warning] = "Desole, vous n'etes pas autorise a acceder a cette page."
+    redirect_to root_url
+    #redirect_to '/home'
+  end
+
+
+  def authorize
+    unless User.find_by_id(session[:user_id])
+      redirect_to(:controller=> "authentification", :action=> "sign_in", :flash => "votre session a expiree, veuillez vous authentifier a nouveau")
+    end
+    return true
+  end
+
 end

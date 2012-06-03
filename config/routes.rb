@@ -1,5 +1,14 @@
 TestApp::Application.routes.draw do
+  resources :users
+  resource :sessions, only: [:new, :create, :destroy]
+
   root :to => 'StaticPages#home'
+
+  match '/sign_up', to: 'users#new'
+  match '/sign_in', to: 'authentification#sign_in'
+  match '/sign_out', to: 'authentification#sign_out'
+
+
 
   match '/help',  to: 'static_pages#help'
   match '/about',  to: 'static_pages#about'
@@ -7,7 +16,7 @@ TestApp::Application.routes.draw do
 
   #get "static_pages/contact"
 
-  resources :users
+
 
 
   # The priority is based upon order of creation:

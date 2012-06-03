@@ -1,11 +1,19 @@
 body{}
 
+#header{
+  display: block;
+}
+
 .gravatar{
     float: left;
     margin-right: 5px;
 }
 
 .contenu{
+
+}
+
+.nav_bar{
 
 }
 

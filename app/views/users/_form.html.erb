@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.text_field :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
     <%= f.label :remember_me %><br />
@@ -63,14 +63,7 @@
     <%= f.label :full_address %><br />
     <%= f.text_field :full_address %>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
