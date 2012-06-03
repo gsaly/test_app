@@ -6,7 +6,7 @@ require 'gravtastic'
 class User < ActiveRecord::Base
   attr_accessible :address, :city, :country, :email, :firstname, :full_address, :lastname, :password, :password_confirmation, :latitude, :login, :longitude, :picture, :postalCode, :remember_me
 
-  validates :firstname, :lastname
+  validates :firstname, :lastname, :presence => true, :length => { maximum: 50}
   EMAIL_REGEX_VALIDATION = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true,
             :format => { :with => EMAIL_REGEX_VALIDATION},
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   protected
   #encryption method
   def self.encrypt(crypted_pass, salt)
-    Digest::SHA1.hexidigest(crypted_password+salt)
+    Digest::SHA1.hexidigest(encrypted_password+salt)
   end
 
   def self.ramdom_string(len)
