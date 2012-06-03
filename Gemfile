@@ -24,6 +24,8 @@ end
 gem 'jquery-rails'
 gem 'geocoder'
 gem 'gravtastic'
+gem 'bcrypt-ruby', '3.0.1'
+gem 'ezcrypto'
 
 group :test do
   gem 'capybara', '1.1.2'
