@@ -46,11 +46,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         #auhtenticate the user after successfull signup
-        sign_in @user
-        flash[:success] = "Bienvenue sur l'application Test app"
-        redirect_to @user
-        #format.html { redirect_to @user, notice: 'User was successfully created.' }
-        #format.json { render json: @user, status: :created, location: @user }
+        cookies.permanent[:remember_token] = @user.remember_token
+        current_user = @user
+        session[:user_id] = @user.id
+        session[:username] = @user.login
+
+        flash[:success] = "Bienvenue dans l'application Test app"
+        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }

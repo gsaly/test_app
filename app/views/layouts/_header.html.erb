@@ -9,7 +9,7 @@
             <li><%= link_to "Aide",    '/help' %></li>
             <li><%= link_to "Créer mon compte", '/sign_up' %></li>
 
-            <% if user_sign_in? %>
+            <% if current_username != nil %>
                 <li><%= link_to "Mon Profile", current_user %></li>
                 <li><%= link_to "Déconnexion", sign_out_path, method: "delete" %></li>
             <% else %>
@@ -21,7 +21,7 @@
     </div>
   </header>
   <div align="right" style="margin-right: 30px;">
-    <% if user_sign_in? %>
+    <% if current_username != nil %>
         Vous êtes connecté en tant que: <%= current_username %>
     <% else %>
         Vous n'êtes pas connecté

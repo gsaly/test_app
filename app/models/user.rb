@@ -1,5 +1,5 @@
 require 'digest/sha2'
-require 'ezcrypto'
+require 'base64'
 
 require 'gravtastic'
 
@@ -25,12 +25,13 @@ class User < ActiveRecord::Base
   gravtastic :secure => true#, :size => 120
   geocoded_by :full_address
 
-  before_save { |user| user.email = email.downcase }
-  before_save :create_remember_token
   after_validation :geocode,  :if => lambda { |obj| obj.full_address_changed? }
 
-  #has_many :topics
+  before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
 
+
+  #has_many :topics
 
   def full_name
   end
@@ -38,6 +39,7 @@ class User < ActiveRecord::Base
 
   def full_address
      [address, postalCode, city, country].compact.join(', ')
+
   end
 
   def self.authenticate(login, password)
@@ -51,27 +53,6 @@ class User < ActiveRecord::Base
   end
 
 
-  def self.authenticate_save(login, password)
-    user = find_by_login(login)
-    if user && user.password_digest == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
-
-  protected
-  def encrypt_password
-    if password.present?
-      self.password_salt = BCrypt::Engine.generate_salt
-      self.password_digest = BCrypt::Engine.hash_secret(password, password_salt)
-    end
-  end
-
-
-  def password_non_blank
-    errors.add_to_base("Missing password" ) if password.blank?
-  end
 
   private
   def create_remember_token
