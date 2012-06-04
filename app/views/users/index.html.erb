@@ -1,4 +1,16 @@
-<h1>Listing users</h1>
+<% provide(:title, "Liste users")%>
+<h1 class="titre">Liste des utilisateurs</h1>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <li>
+      <%= gravatar_for user, size: 52 %>
+      <%= link_to user.login, user %>
+    </li>
+  <% end %>
+</ul>
+
+
 
 <table>
   <tr>

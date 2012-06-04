@@ -7,6 +7,12 @@ gem 'gravtastic'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'ezcrypto'
 gem 'bootstrap-sass', '2.0.3'
+gem 'execjs'
+gem 'faker', '1.0.1'    #create for us some sample users from rake test
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.6'
+
+#gem 'therubyracer', :platforms => :ruby
 #gem 'thin'
 
 

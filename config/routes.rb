@@ -1,6 +1,6 @@
 TestApp::Application.routes.draw do
+  resources :posts
   resources :users
-  resource :sessions, only: [:new, :create, :destroy]
 
   root :to => 'StaticPages#home'
 

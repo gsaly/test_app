@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include AuthentificationHelper
 
-  helper_method  :user_sign_in?, :deny_access, :current_id, :current_user, :current_username
+  helper_method  :user_sign_in?, :deny_access, :current_id, :current_user, :current_user?, :current_username
 
-  before_filter :authorize , :only =>[:show, :index]
+  before_filter :authorize , :only =>[:index, :edit, :update]
 
   ################ Gestion des logs ################
 
@@ -28,6 +28,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= current_id && User.find(current_id)
     #@current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
+  
+  
+  def current_user?(user)
+    user == current_user
+  end
+
 
   def current_username
     session[:username]
@@ -56,11 +62,13 @@ class ApplicationController < ActionController::Base
     #redirect_to '/home'
   end
 
-
+  private
+  
   def authorize
     unless  User.find_by_id(session[:user_id])   # User.find_by_remember_token(cookies[:remember_token]) #
-      redirect_to(:controller=> "authentification", :action=> "sign_in", :flash => "votre session a expiree, veuillez vous authentifier a nouveau")
-       User.find_by_remember_token(cookies[:remember_token])
+      #redirect_to(:controller=> "authentification", :action=> "sign_in", :notice => "votre session a expiree, veuillez vous authentifier a nouveau")
+      redirect_to(sign_in_path, :notice => "votre session a expiree, veuillez vous authentifier a nouveau")
+      User.find_by_remember_token(cookies[:remember_token])
     end
     return true
   end

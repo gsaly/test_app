@@ -1,12 +1,15 @@
 require 'digest/sha2'
 require 'base64'
-
 require 'gravtastic'
+require "execjs"
 
 class User < ActiveRecord::Base
   attr_accessible :address, :city, :country, :email, :firstname, :full_address, :lastname, :latitude, :login, :longitude, :password, :password_confirmation, :encrypted_password, :picture, :postalCode, :remember_token
 
-  has_secure_password
+  has_secure_password   #autogenerate the user encrypted password in the "password_digest" attribute
+  
+  has_many :posts
+  
 
   #VALIDATIONS
   #validates :firstname, :lastname, :presence => true, :length => { maximum: 50}
@@ -29,9 +32,8 @@ class User < ActiveRecord::Base
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
+  #before_save :save_full_address
 
-
-  #has_many :topics
 
   def full_name
   end
@@ -39,7 +41,10 @@ class User < ActiveRecord::Base
 
   def full_address
      [address, postalCode, city, country].compact.join(', ')
-
+  end
+  
+   def save_full_address
+    self.full_address ||= full_address
   end
 
   def self.authenticate(login, password)
