@@ -15,15 +15,16 @@
 
   <% flash.each do |key, msg| %>
     <% if key.eql?("error_explanation")%>
-        <% content_tag :div, msg, :class => "alert alert-error" %>
+        <% content_tag :div, msg, :class => "error" %>
     <% else %>
-        <%= content_tag :div, msg, :id => key %>
+        <%= content_tag :div, msg, :class => "notice" %>
     <% end %>
   <% end %>
 
-  <div class="contenair">
+  <div>
     <%= yield %>
   </div>
+  
   <%= render 'layouts/footer' %>
 </body>
 </html>

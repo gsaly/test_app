@@ -10,7 +10,7 @@
             <li><%= link_to "Créer mon compte", '/sign_up' %></li>
 
             <% if current_username != nil %>
-                <li><%= link_to "Mon Profile", current_user %></li>
+                <li><%= link_to "Voir mon profil", current_user %></li>
                 <li><%= link_to "Déconnexion", sign_out_path, method: "delete" %></li>
             <% else %>
                 <li><%= link_to "Connexion", '/sign_in' %></li>

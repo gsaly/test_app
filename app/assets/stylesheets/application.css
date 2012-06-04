@@ -45,6 +45,14 @@ h1.titre{
     margin-bottom: 50px;
 }
 
+h1.titre1{
+    color: #ff8c00;
+    position: relative;
+    left: 10px;
+    bottom:10px;
+   
+}
+
 div.field{
     -moz-box-align: left;
     -webkit-box-align: left;
@@ -52,6 +60,28 @@ div.field{
 
 .actions{ margin-left: 300px;}
 
+div.notice{
+	position: relative;
+	left: 40%;
+	color: #ff8c00; 
+}
+
+div.error{
+	position: relative;
+	left: 40%;
+	color: red; 
+}
+
+div#post table{
+    width: 200px;
+    height: auto;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border-color: #0000ff;
+    border-width: 1px;
+    line-height: 16px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

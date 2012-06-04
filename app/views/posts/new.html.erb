@@ -1,5 +1,6 @@
-<h1>New post</h1>
+<%provide(:title, "New post")%>
+<h1 class="titre">Nouveau message</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Liste des messages', posts_path %>

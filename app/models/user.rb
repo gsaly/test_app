@@ -25,14 +25,15 @@ class User < ActiveRecord::Base
 
   #for using the gravtastic gem/plugin
   include Gravtastic
-  gravtastic :secure => true#, :size => 120
-  geocoded_by :address #:full_address
-
-  after_validation :geocode,  :if => lambda { |obj| obj.full_address_changed? }
+  gravtastic #:secure => true, :size => 20
+  
+  geocoded_by :address
+  after_validation :geocode,  :if => lambda { |obj| obj.address_changed? }
+  #geocoded_by :full_address
+  #after_validation :geocode,  :if => lambda { |obj| obj.full_address_changed? }
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
-  #before_save :save_full_address
 
 
   def full_name
@@ -44,9 +45,6 @@ class User < ActiveRecord::Base
      [address, postalCode, city, country].compact.join(', ')
   end
   
-   def save_full_address
-    self.full_address ||= full_address
-  end
   
   def self.authenticate(login, password)
     user = find_by_login(login)

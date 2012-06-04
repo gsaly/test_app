@@ -6,7 +6,7 @@ TestApp::Application.routes.draw do
 
   match '/sign_up', to: 'users#new'
   match '/sign_in', to: 'authentification#sign_in'
-  match '/sign_out', to: 'authentification#sign_out', via: :delete
+  match '/sign_out', to: 'authentification#sign_out'  #, via: :delete
 
 
 
