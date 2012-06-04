@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   #for using the gravtastic gem/plugin
   include Gravtastic
   gravtastic :secure => true#, :size => 120
-  geocoded_by :full_address
+  geocoded_by :address #:full_address
 
   after_validation :geocode,  :if => lambda { |obj| obj.full_address_changed? }
 
@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
 
 
   def full_name
+    firstname.nil? ? lastname : lastname + " " + firstname unless firstname.nil? or lastname.nil?
   end
 
 
@@ -46,7 +47,7 @@ class User < ActiveRecord::Base
    def save_full_address
     self.full_address ||= full_address
   end
-
+  
   def self.authenticate(login, password)
     user = find_by_login(login)
     #if user && user.password_digest == BCrypt::Engine.hash_secret(password, user.password_salt)

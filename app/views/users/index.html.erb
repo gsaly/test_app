@@ -3,53 +3,24 @@
 
 <ul class="users">
   <% @users.each do |user| %>
-    <li>
-      <%= gravatar_for user, size: 52 %>
+    <li style="text-decoration: underline">
+      <%= gravatar_for user %>
       <%= link_to user.login, user %>
+      <h2><%= link_to user.full_name, user %></h2>
     </li>
+   
+    
+   
   <% end %>
 </ul>
 
 
 
-<table>
-  <tr>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Login</th>
-    <th>Email</th>
-    <th>Address</th>
-    <th>Postalcode</th>
-    <th>City</th>
-    <th>Country</th>
-    <th>Full address</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<!-- 
+=begin	Fonctions reservees aux Administrateurs
+	<%#= link_to 'Edit', edit_user_path(user) %>
+	<%#= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %>
+	<%#= link_to 'New User', new_user_path %>
+=end
+-->
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
-    <td><%= user.login %></td>
-    <td><%= user.email %></td>
-    <td><%= user.address %></td>
-    <td><%= user.postalCode %></td>
-    <td><%= user.city %></td>
-    <td><%= user.country %></td>
-    <td><%= user.full_address %></td>
-    <td><%= user.latitude %></td>
-    <td><%= user.longitude %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New User', new_user_path %>

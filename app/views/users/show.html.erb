@@ -1,82 +1,52 @@
 <% provide(:title, "fiche de #{@user.login}") %>
-<h1 class="titre">Fiche utilisateur</h1>
-
-<% provide(:title, @user.login) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-</div>
-
+<h1 class="titre">Profil : </h1>
 
 <div class="ligne">
-  <div>
-    <%= gravatar_for @user %>
-
-    <p>
-      <b>Prénom:</b>
-      <%= @user.firstname %>
-    </p>
-
-    <p>
-      <b>Nom:</b>
-      <%= @user.lastname %>
-    </p>
-
-    <p>
-      <b>Login:</b>
-      <%= @user.login %>
-    </p>
-
-    <p>
-      <b>Email:</b>
-      <%= @user.email %>
-    </p>
-
-    <p>
-      <b>Address:</b>
-      <%= @user.address %>
-    </p>
-
-    <p>
-      <b>Postalcode:</b>
-      <%= @user.postalCode %>
-    </p>
-
-    <p>
-      <b>City:</b>
-      <%= @user.city %>
-    </p>
-
-    <p>
-      <b>Country:</b>
-      <%= @user.country %>
-    </p>
-
-    <p>
-      <b>Full address:</b>
-      <%= @user.full_address %>
-    </p>
-
-    <p>
-      <b>Latitude:</b>
-      <%= @user.latitude %>
-    </p>
-
-    <p>
-      <b>Longitude:</b>
-      <%= @user.longitude %>
-    </p>
-  </div>
-  <div>
+	
+	<div class="row">
+	  <aside class="span4">
+	    <section>
+	      <h1 style="margin-bottom: 60px;">
+	        <%= gravatar_for @user %>
+	        <%= @user.login %>
+	      </h1>
+	     
+	      <p>
+		     <b>Prénom:</b>
+		     <%= @user.firstname %>
+		  </p>
+	      <p>
+	       <b>Nom:</b>
+	       <%= @user.lastname %>
+	      </p>
+	      <p>
+	       <b>Email:</b>
+	        <%= @user.email %>
+	      </p>
+	    </section>
+	  </aside>
+	</div>
+	
+	<div>
+		<section>
+		  <p>
+	        <b>Address:</b>
+	      	<%= @user.full_address %>
+	      </p>
+		  <p>
+		     <b>Latitude:</b>
+		     <%= @user.latitude %>
+		  </p>
+	      <p>
+	       <b>Longitude:</b>
+	       <%= @user.longitude %>
+	      </p>
+	
      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
-   </div>
+   </section></div>
 </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div align="center" style="margin-top: 30px;">
+	<%= link_to 'Modifier', edit_user_path(@user) %> |
+	<%= link_to 'Liste des utilisateurs', users_path %>
+</div>

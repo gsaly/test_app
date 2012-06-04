@@ -1,9 +1,13 @@
 
 /*
- *= require app_bootstrap
+ *= require custom
  */
 
-body{}
+body{ 
+	width: 940px;
+	margin: 0 auto;
+	font: 10pt/1.5em Helvetica,"Helvetica neue", Arial, sans-serif;
+}
 
 #header{
   display: block;
@@ -22,10 +26,11 @@ div.ligne {
     -moz-column-rule: 0px;
 }
 
+
 div.contenu {
     width: 600px;
     height: auto;
-    margin-left: 300px;
+    margin-left: 200px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -41,7 +46,6 @@ h1.titre{
 }
 
 div.field{
-    box-align:left;
     -moz-box-align: left;
     -webkit-box-align: left;
 }
