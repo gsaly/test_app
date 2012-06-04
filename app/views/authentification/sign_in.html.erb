@@ -1,23 +1,24 @@
 <% provide(:title, "Sign_in") %>
-<div class="form">
+<h1 class="titre">Authentification</h1>
+
+<div class="contenu">
 
     <%= form_tag  :controller => 'authentification', :action => 'sign_in' do %>
-        <table id="authentif">
-          <tr>
-            <th colspan="2" style="font-size: 18px; padding: 5px" >Authentification</th>
-          </tr>
+        <table>
 
           <tr>
-            <td><%= label_tag :Login %></td>
+            <td><%= label_tag "Login: " %></td>
             <td><%= text_field :user,:login, :class=>"txt" %></td>
           </tr>
           <tr>
-            <td><%= label_tag :Password %></td>
+            <td><%= label_tag "Mot de passe: " %></td>
             <td><%= password_field :user, :password, :class=>"txt" %></td>
           </tr>
           <tr>
-            <td align="right" colspan="2"><br /><%= submit_tag "Se connecter", :class=>"btn", :id => 'signin_submit'%></td>
+            <td><%= submit_tag "Se connecter", :class=>"btn btn-large btn-primary"%></td>
           </tr>
         </table>
     <% end %>
+
+  <p>Vous n'avez pas de compte? <%= link_to "Créer votre compte", sign_up_path %></p>
 </div>

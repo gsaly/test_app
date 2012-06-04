@@ -1,3 +1,31 @@
 <div id="header">
-    <h1>Test application</h1>
+  <header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "My Test app logo", '#', id: "logo" %>
+        <nav>
+          <ul class="nav pull-right">
+            <li><%= link_to "Accueil",    root_url %></li>
+            <li><%= link_to "Aide",    '/help' %></li>
+            <li><%= link_to "Créer mon compte", '/sign_up' %></li>
+
+            <% if user_sign_in? %>
+                <li><%= link_to "Mon Profile", current_user %></li>
+                <li><%= link_to "Déconnexion", sign_out_path, method: "delete" %></li>
+            <% else %>
+                <li><%= link_to "Connexion", '/sign_in' %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <div align="right" style="margin-right: 30px;">
+    <% if user_sign_in? %>
+        Vous êtes connecté en tant que: <%= current_username %>
+    <% else %>
+        Vous n'êtes pas connecté
+    <% end %>
+  </div>
+  <h1>Test application</h1>
 </div>

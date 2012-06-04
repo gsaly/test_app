@@ -4,30 +4,32 @@ class AuthentificationController < ApplicationController
     if params[:user]
       @user = User.authenticate(params[:user][:login], params[:user][:password])
       if @user
+        cookies.permanent[:remember_token] = @user.remember_token
+        current_user = @user
+
         session[:user_id] = @user.id
         session[:username] = @user.login
 
-        flash[:notice] = 'Vous etes maintenant connecte'
+        flash[:success] = 'Vous etes maintenant connecte'
         redirect_to @user #'/index'
       else
-        flash[:warning] = 'Echec de connexion, votre login et/ou mot de passe sont incorrects'
+        flash.now[:error_explanation] = 'Echec de connexion, votre login et/ou mot de passe sont incorrects'
+
       end
     end
   end
 
 
   def sign_out
+    current_user = nil
+    cookies.delete(:remember_token)
+
     reset_session
     session[:user_id] = nil
     session[:username] = nil
 
-    redirect_to root_url #'/'
+    flash[:warning] = "Vous etes maintenant deconnecte"
+    redirect_to root_path #'/'
   end
 
-
-  def sign_up
-    @user = User.new
-    #render 'shared/signup.html.erb', :user => @user
-    render 'sign_up'
-  end
 end

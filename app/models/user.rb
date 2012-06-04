@@ -4,28 +4,29 @@ require 'ezcrypto'
 require 'gravtastic'
 
 class User < ActiveRecord::Base
-  attr_accessible :address, :city, :country, :email, :firstname, :full_address, :lastname, :latitude, :login, :longitude, :password, :password_confirmation, :encrypted_password, :picture, :postalCode, :remember_me
+  attr_accessible :address, :city, :country, :email, :firstname, :full_address, :lastname, :latitude, :login, :longitude, :password, :password_confirmation, :encrypted_password, :picture, :postalCode, :remember_token
 
   has_secure_password
 
+  #VALIDATIONS
   #validates :firstname, :lastname, :presence => true, :length => { maximum: 50}
   EMAIL_REGEX_VALIDATION = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, :presence => true,
             :format => { :with => EMAIL_REGEX_VALIDATION},
             uniqueness: { case_sensitive: false}
 
-
   validates :login, :presence => true, uniqueness: true,  :length => { minimum: 4}
+
   validates :password, :length => { :minimum => 6 }
   validates :password_confirmation, presence: true
-
-  before_save { |user| user.email = email.downcase }
 
   #for using the gravtastic gem/plugin
   include Gravtastic
   gravtastic :secure => true#, :size => 120
-
   geocoded_by :full_address
+
+  before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
   after_validation :geocode,  :if => lambda { |obj| obj.full_address_changed? }
 
   #has_many :topics
@@ -70,6 +71,11 @@ class User < ActiveRecord::Base
 
   def password_non_blank
     errors.add_to_base("Missing password" ) if password.blank?
+  end
+
+  private
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
   end
 
 end

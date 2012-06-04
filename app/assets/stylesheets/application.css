@@ -1,5 +1,8 @@
-*= require app_bootstrap
-*= require bootstrap
+
+/*
+ *= require app_bootstrap
+ */
+
 body{}
 
 #header{
@@ -11,13 +14,39 @@ body{}
     margin-right: 5px;
 }
 
-.contenu{
+
+div.ligne {
+    -webkit-column-count: 2;
+    -webkit-column-rule: 0px;
+    -moz-column-count: 2;
+    -moz-column-rule: 0px;
+}
+
+div.contenu {
+    width: 600px;
+    height: auto;
+    margin-left: 300px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border-color: #0000ff;
+    border-width: 1px;
 
 }
 
-.nav_bar{
-
+h1.titre{
+    color: #ff8c00;
+    margin-left: 300px;
+    margin-bottom: 50px;
 }
+
+div.field{
+    box-align:left;
+    -moz-box-align: left;
+    -webkit-box-align: left;
+}
+
+.actions{ margin-left: 300px;}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

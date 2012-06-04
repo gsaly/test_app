@@ -18,12 +18,17 @@ class ApplicationController < ActionController::Base
     session[:user_id]
   end
 
-  def current_user
-    current_id ? User.find(current_id) : nil
+  def current_user=(user)
+    @current_user = user
   end
 
+  def current_user
+    #current_id ? User.find(current_id) : nil
+    #@current_user ||= current_id && User.find(current_id)
+    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+  end
 
-  def current_login
+  def current_username
     session[:username]
   end
 
@@ -33,7 +38,8 @@ class ApplicationController < ActionController::Base
   end
 
   def user_sign_in?
-    session[:user_id].nil?
+    #session[:user_id].nil?
+    !current_user.nil?
   end
 
 

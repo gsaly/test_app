@@ -1,81 +1,69 @@
 <% provide(:title, "fiche de #{@user.login}") %>
-<p id="notice"><%= notice %></p>
-<%= gravatar_for @user %>
-<p>
-  <b>Firstname:</b>
-  <%= @user.firstname %>
-</p>
+<h1 class="titre">Fiche utilisateur</h1>
 
-<p>
-  <b>Lastname:</b>
-  <%= @user.lastname %>
-</p>
+<div class="ligne">
+  <div>
+    <%= gravatar_for @user %>
 
-<p>
-  <b>Login:</b>
-  <%= @user.login %>
-</p>
+    <p>
+      <b>Prénom:</b>
+      <%= @user.firstname %>
+    </p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
+    <p>
+      <b>Nom:</b>
+      <%= @user.lastname %>
+    </p>
 
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
+    <p>
+      <b>Login:</b>
+      <%= @user.login %>
+    </p>
 
-<p>
-  <b>Password confirmation:</b>
-  <%= @user.password_confirmation %>
-</p>
+    <p>
+      <b>Email:</b>
+      <%= @user.email %>
+    </p>
 
-<p>
-  <b>Remember me:</b>
-  <%= @user.remember_me %>
-</p>
+    <p>
+      <b>Address:</b>
+      <%= @user.address %>
+    </p>
 
-<p>
-  <b>Picture:</b>
-  <%= @user.picture %>
-</p>
+    <p>
+      <b>Postalcode:</b>
+      <%= @user.postalCode %>
+    </p>
 
-<p>
-  <b>Address:</b>
-  <%= @user.address %>
-</p>
+    <p>
+      <b>City:</b>
+      <%= @user.city %>
+    </p>
 
-<p>
-  <b>Postalcode:</b>
-  <%= @user.postalCode %>
-</p>
+    <p>
+      <b>Country:</b>
+      <%= @user.country %>
+    </p>
 
-<p>
-  <b>City:</b>
-  <%= @user.city %>
-</p>
+    <p>
+      <b>Full address:</b>
+      <%= @user.full_address %>
+    </p>
 
-<p>
-  <b>Country:</b>
-  <%= @user.country %>
-</p>
+    <p>
+      <b>Latitude:</b>
+      <%= @user.latitude %>
+    </p>
 
-<p>
-  <b>Full address:</b>
-  <%= @user.full_address %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @user.latitude %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%= @user.longitude %>
-</p>
-
+    <p>
+      <b>Longitude:</b>
+      <%= @user.longitude %>
+    </p>
+  </div>
+  <div>
+     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+   </div>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

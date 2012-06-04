@@ -45,10 +45,10 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        #auhtenticate the user after successfull signup
         sign_in @user
-        flash[:success] = "Bienvenue notre site"
+        flash[:success] = "Bienvenue sur l'application Test app"
         redirect_to @user
-
         #format.html { redirect_to @user, notice: 'User was successfully created.' }
         #format.json { render json: @user, status: :created, location: @user }
       else

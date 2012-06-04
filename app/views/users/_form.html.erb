@@ -1,3 +1,5 @@
+<div class="contenu" >
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -11,60 +13,64 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :firstname %><br />
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="field">
-    <%= f.label :lastname %><br />
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="field">
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :remember_me %><br />
-    <%= f.number_field :remember_me %>
-  </div>
-  <div class="field">
-    <%= f.label :picture %><br />
-    <%= f.text_field :picture %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :postalCode %><br />
-    <%= f.text_field :postalCode %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :full_address %><br />
-    <%= f.text_field :full_address %>
-  </div>
+   <div class="ligne">
+      <div class="field" align="left">
+        <%= f.label "Prénom: " %>
+        <%= f.text_field :firstname %>
+      </div>
+
+      <div class="field" align="left">
+        <%= f.label "Nom: " %>
+        <%= f.text_field :lastname %>
+      </div>
+    </div>
+
+   <div class="ligne">
+      <div class="field" align="left">
+        <%= f.label "Login: " %>
+        <%= f.text_field :login %>
+      </div>
+      <div class="field" align="left">
+        <%= f.label "Email: " %>
+        <%= f.text_field :email %>
+      </div>
+   </div>
+
+    <div class="ligne">
+      <div class="field" align="left">
+        <%= f.label "Mot de passe: " %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="field" align="left">
+        <%= f.label "Confirmer mot de passe: " %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
+
+    <div class="ligne">
+      <div class="field" align="left">
+        <%= f.label "Adresse" %>
+        <%= f.text_field :address %>
+      </div>
+      <div class="field" align="left">
+        <%= f.label "Code postal: " %>
+        <%= f.text_field :postalCode %>
+      </div>
+    </div>
+
+    <div class="ligne">
+      <div class="field" align="left">
+        <%= f.label "Ville: " %>
+        <%= f.text_field :city %>
+      </div>
+      <div class="field" align="left">
+        <%= f.label "Pays: " %>
+        <%= f.text_field :country %>
+      </div>
+    </div>
+</div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enregistrer", :class => "btn btn-large btn-primary" %>
   </div>
 <% end %>
