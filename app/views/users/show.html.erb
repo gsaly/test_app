@@ -1,6 +1,19 @@
 <% provide(:title, "fiche de #{@user.login}") %>
 <h1 class="titre">Fiche utilisateur</h1>
 
+<% provide(:title, @user.login) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+
 <div class="ligne">
   <div>
     <%= gravatar_for @user %>

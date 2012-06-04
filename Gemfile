@@ -7,7 +7,7 @@ gem 'gravtastic'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'ezcrypto'
 gem 'bootstrap-sass', '2.0.3'
-gem 'thin'
+#gem 'thin'
 
 
 # Bundle edge Rails instead:

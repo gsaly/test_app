@@ -78,6 +78,7 @@ GEM
     mysql2 (0.3.11-x86-mingw32)
     nokogiri (1.5.3)
     nokogiri (1.5.3-x86-mingw32)
+    pg (0.12.2)
     pg (0.12.2-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -147,6 +148,7 @@ GEM
       nokogiri (~> 1.3)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
