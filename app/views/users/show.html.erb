@@ -17,8 +17,8 @@
 	    <section style="width: 360px;">
 	    	<div class="ligne3">
 	    		<p><h3><%= current_user.posts.count %></h3>MESSAGES |</p> 
-	    		<p><h3><%= current_user.posts.count %></h3>ABONNEMENTS |</p> 
-	    		<p><h3><%= current_user.posts.count %></h3>ABONNES</p>
+	    		<p><h3 id="followers"><%= @user.followers.count %></h3>ABONNEMENTS |</p> 
+	    		<p><h3 id="following"><%= @user.followed_users.count %></h3>ABONNES</p>
 			</div>
 	    </section>
 	    <section style="width: 360px;"></section>

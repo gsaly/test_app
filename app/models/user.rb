@@ -8,8 +8,12 @@ class User < ActiveRecord::Base
 
   has_secure_password   #autogenerate the user encrypted password in the "password_digest" attribute
   
-  has_many :posts
+  has_many :posts, :dependent => :destroy     #user's posts are deleted when user is destroy tpp
+  has_many :relations, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relations, source: :followed
   
+  has_many :reverse_relations, foreign_key: "followed_id",  class_name:  "Relation",  dependent:  :destroy
+  has_many :followers, through: :reverse_relations, source: :follower
 
   #VALIDATIONS
   #validates :firstname, :lastname, :presence => true, :length => { maximum: 50}

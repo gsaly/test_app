@@ -10,7 +10,9 @@
   <![endif]-->
 </head>
 <body>
-
+	
+  <% @user ||= current_user %>
+  
   <%= render 'layouts/header' %>
 
   <% flash.each do |key, msg| %>

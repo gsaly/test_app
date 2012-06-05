@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe "AuthentificationPages" do
@@ -25,7 +26,7 @@ describe "AuthentificationPages" do
     end
 
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { Factory.create(:user) }
       before do
         fill_in "Email",    with: user.email
         fill_in "Password", with: user.password
@@ -42,7 +43,7 @@ describe "AuthentificationPages" do
   
     #for non signed user
     describe "for non-signed-in users" do
-        let(:user) { FactoryGirl.create(:user) }
+        let(:user) { Factory.create(:user) }
   
         describe "in the Users controller" do
   
@@ -60,8 +61,8 @@ describe "AuthentificationPages" do
   
   
      describe "as wrong user" do
-        let(:user) { FactoryGirl.create(:user) }
-        let(:wrong_user) { FactoryGirl.create(:user, email: "wrong_user@example.com") }
+        let(:user) { Factory.create(:user) }
+        let(:wrong_user) { Factory.create(:user, email: "wrong_user@example.com") }
         before { sign_in_after_signup user }
   
         describe "visiting Users#edit page" do

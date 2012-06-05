@@ -1,6 +1,11 @@
 TestApp::Application.routes.draw do
   resources :posts
-  resources :users
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   root :to => 'StaticPages#home'
 

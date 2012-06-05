@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require "rspec"
 
 describe "Static pages" do
@@ -8,13 +10,13 @@ describe "Static pages" do
       click_link "About"
       page.should have_selector 'title', text: full_title('About')
       click_link "Aide"
-      page.should # fill in
+      page.should have_selector 'title', text: full_title('Help')
       click_link "Contact"
-      page.should # fill in
+      page.should have_selector 'title', text: full_title('Contact Us')
       click_link "Accueil"
-      page.should # fill in
+      page.should have_selector 'title', text: full_title('Home')
       click_link "Créer mon compte"
-      page.should # fill in
+      page.should have_selector 'title', text: full_title('Sign_up')
     end
   end
 

@@ -123,7 +123,8 @@ describe PostsController do
       it "redirects to the post" do
         post = Post.create! valid_attributes
         put :update, {:id => post.to_param, :post => valid_attributes}, valid_session
-        response.should redirect_to(post)
+        #response.should redirect_to(post)
+        response.should redirect_to(posts_path)
       end
     end
 

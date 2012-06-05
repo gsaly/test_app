@@ -47,7 +47,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Message envoye avec success' }
+        format.html { redirect_to posts_path, notice: 'Message envoye avec success' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -64,7 +64,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Message mis a jour avec success.' }
+        format.html { redirect_to posts_path, notice: 'Message mis a jour avec success.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -12,5 +12,13 @@ describe User do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
+  
+  #it is replacing the @user instance variable
+  it { should respond_to(:feed) }
+  it { should respond_to(:relations) }
+  
+  it { should respond_to(:relations) }
+  it { should respond_to(:followed_users) }
+
 
 end
