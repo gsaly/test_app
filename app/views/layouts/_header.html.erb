@@ -11,6 +11,7 @@
 
             <% if current_username != nil %>
                 <li><%= link_to "Voir mon profil", current_user %></li>
+                <li><%= link_to "Liste messages", posts_path %></li>
                 <li><%= link_to "Déconnexion", sign_out_path, method: "delete" %></li>
             <% else %>
                 <li><%= link_to "Connexion", '/sign_in' %></li>

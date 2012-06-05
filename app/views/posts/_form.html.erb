@@ -1,4 +1,4 @@
-<div class="contenu" >
+<div>
 	<%= form_for(@post) do |f| %>
 	  <% if @post.errors.any? %>
 	    <div id="error_explanation">
@@ -12,13 +12,16 @@
 	    </div>
 	  <% end %>
 	
-	  <div class="field" align="left">
-	    <%= f.label :content %>
-	    <%= f.text_field :content %>
+	 <div class="ligne" style="width: 50%;">
+		  <div class="field" align="left">
+		    <%= f.label "Votre texte: " %>
+		    <%= f.text_area :content, :rows => 2 %>
+		  </div>
+		  <div  style="padding-top: 40px;">
+		  	<%= f.submit "Envoyer", :class => "btn btn-large btn-primary" %>
+		  </div>
 	  </div>
   </div>
  
-  <div class="actions">
-  	<%= f.submit "Envoyer", :class => "btn btn-large btn-primary" %>
-  </div>
+
 <% end %>

@@ -26,6 +26,13 @@ div.ligne {
     -moz-column-rule: 0px;
 }
 
+div.ligne3 {
+    -webkit-column-count: 3;
+    -webkit-column-rule: 0px;
+    -moz-column-count: 3;
+    -moz-column-rule: 0px;
+	-moz-border-radius: 8px;
+}
 
 div.contenu {
     width: 600px;
@@ -80,7 +87,7 @@ div#post table{
     border-radius: 8px;
     border-color: #0000ff;
     border-width: 1px;
-    line-height: 16px;
+   
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

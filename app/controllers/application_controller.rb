@@ -1,10 +1,13 @@
+require 'date'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include AuthentificationHelper
 
-  helper_method  :user_sign_in?, :deny_access, :current_id, :current_user, :current_user?, :current_username
+  helper_method  :user_sign_in?, :deny_access, :current_id, :current_user, :current_user?, :current_username, :show_username
 
   before_filter :authorize , :only =>[:index, :edit, :update]
+  before_filter :store_location
 
   ################ Gestion des logs ################
 
@@ -38,8 +41,11 @@ class ApplicationController < ActionController::Base
   def current_username
     session[:username]
   end
-
-
+  
+  def show_username
+    "@#{current_username}"
+  end
+  
   def authenticity
     deny_access unless !user_sign_in?
   end

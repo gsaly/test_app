@@ -8,22 +8,20 @@
 	    <section>
 	      <h2 style="margin-bottom: 60px;">
 	        <%= gravatar_for @user %>
-	        <%= @user.login %>
+	          <div>
+		      	<b><%= link_to current_user.full_name, current_user %></b>
+		      	<%= link_to show_username, current_user %>
+		      </div>
 	      </h2>
-	     
-	      <p>
-		     <b>Prénom:</b>
-		     <%= @user.firstname %>
-		  </p>
-	      <p>
-	       <b>Nom:</b>
-	       <%= @user.lastname %>
-	      </p>
-	      <p>
-	       <b>Email:</b>
-	        <%= @user.email %>
-	      </p>
 	    </section>
+	    <section style="width: 360px;">
+	    	<div class="ligne3">
+	    		<p><h3><%= current_user.posts.count %></h3>MESSAGES |</p> 
+	    		<p><h3><%= current_user.posts.count %></h3>ABONNEMENTS |</p> 
+	    		<p><h3><%= current_user.posts.count %></h3>ABONNES</p>
+			</div>
+	    </section>
+	    <section style="width: 360px;"></section>
 	  </aside>
 	</div>
 	

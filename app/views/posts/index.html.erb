@@ -1,25 +1,28 @@
-<h1>Listing posts</h1>
+<% provide(:tltle, "Liste messages")%>
+<h1 class="titre1">Listes messages</h1>
 
-<table>
-  <tr>
-    <th>Content</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<ul class="posts">
+  <% @posts.each do |post| %>
+    <li>
+      <%= gravatar_for current_user %>
+      <div class="ligne3">
+	      <div>
+	      	<b><%= link_to current_user.full_name, current_user %></b>
+	      	<%= link_to show_username, current_user %>
+	      </div>
+	      <div>
+	      	 <%= link_to 'Modifier', edit_post_path(post) %>  |
+	    	 <%= link_to 'Supprimer', post, confirm: 'Confirmer?', method: :delete %>
+	      </div>
+	      <div>posté le <%= post.time_count %></div>
+	  </div>
+      <%= h post.view_post %>
+    </li>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.content %></td>
-    <td><%= post.user_id %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <% end %>
+</ul>
 
-<br />
+<div align="center" style="margin-top: 40px;">
+	<%= link_to 'Nouveau message', new_post_path, :class => "btn btn-large btn-primary" %>
+</div>
 
-<%= link_to 'New Post', new_post_path %>
